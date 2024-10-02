@@ -2,16 +2,16 @@
 
 namespace LiveOficial\Dito;
 
-class UserID
+class ID implements UserIDContract
 {
     private $value;
 
-    public function __construct(string $email)
+    public function __construct(string $id)
     {
-        $this->value = sha1($email);
+        $this->value = preg_replace('/[^0-9]/', '', $id);
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->value;
     }

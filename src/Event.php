@@ -16,7 +16,7 @@ class Event
         $this->api = $api;
     }
 
-    public function setID(UserID $id): self
+    public function setID(UserIDContract $id): self
     {
         $this->id = $id;
         return $this;

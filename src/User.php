@@ -7,6 +7,7 @@ use JsonSerializable;
 class User implements JsonSerializable
 {
     private $api;
+    private $id;
     private $name;
     private $gender;
     private $birthDate;
@@ -16,6 +17,12 @@ class User implements JsonSerializable
     public function __construct(ApiContract $api)
     {
         $this->api = $api;
+    }
+    
+    public function setId(UserIDContract $id)
+    {
+        $this->id = $id;
+        return $this;
     }
 
     public function addCustomData(string $key, string $value): self
@@ -62,7 +69,7 @@ class User implements JsonSerializable
 
     public function getId(): string
     {
-        return sha1($this->email);
+        return $this->id;
     }
 
     public function register(): void
